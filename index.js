@@ -5,7 +5,7 @@ import {getTasks, createNewTask, patchTask, putTask, deleteTask} from "./utils/t
 import {initialData} from './initialData.js';
 
 /*************************************************************************************************************************************************
- * FIX BUGS!!!
+ * 🪲FIX BUGS!!
  * **********************************************************************************************************************************************/
 
 // Function checks if local storage already has data, if not it loads initialData to localStorage
@@ -71,6 +71,7 @@ const elements = {
   // Additional elements if needed
   filterDiv: document.getElementById('filterDiv'),
   
+}
 
 let activeBoard = ""
 
@@ -210,24 +211,24 @@ function setupEventListeners() {
     elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
   });
 
-   // Show sidebar event listener
-   elements.hideSideBarBtn.addEventListener('click', () => toggleSidebar(false));
-   elements.showSideBarBtn.addEventListener('click', () => toggleSidebar(true));
- 
-   // Theme switch event listener
-   elements.themeSwitch.addEventListener('change', toggleTheme);
- 
-   // Show Add New Task Modal event listener
-   elements.createNewTaskBtn.addEventListener('click', () => {
-     toggleModal(true);
-     elements.filterDiv.style.display = 'block'; // Also show the filter overlay
-   });
- 
-   // Add new task form submission event listener
-   elements.modalWindow.addEventListener('submit',  (event) => {
-     addTask(event)
-   });
- }
+  // Show sidebar event listener
+  elements.hideSideBarBtn.addEventListener('click', () => toggleSidebar(false));
+  elements.showSideBarBtn.addEventListener('click', () => toggleSidebar(true));
+
+  // Theme switch event listener
+  elements.themeSwitch.addEventListener('change', toggleTheme);
+
+  // Show Add New Task Modal event listener
+  elements.createNewTaskBtn.addEventListener('click', () => {
+    toggleModal(true);
+    elements.filterDiv.style.display = 'block'; // Also show the filter overlay
+  });
+
+  // Add new task form submission event listener
+  elements.modalWindow.addEventListener('submit',  (event) => {
+    addTask(event)
+  });
+}
 
 // Toggles tasks modal
 // Task: Fix bugs
@@ -285,59 +286,58 @@ function toggleTheme() {
 
 
 function openEditTaskModal(task) {
-   // Set task details in modal inputs
-   elements.editTaskTitleInput.value = task.title;
-   elements.editTaskDescInput.value = task.description;
-   elements.editSelectStatus.value = task.status;
- 
-   // Get button elements from the task modal
-   const saveBtnChanges = elements.saveTaskChangesBtn;
-   const deleteButton = elements.deleteTaskBtn;
-   // Call saveTaskChanges upon click of Save Changes button
-   saveBtnChanges.addEventListener('click', () => {
-     saveTaskChanges(task.id);
-     
-   });
- 
-   // Delete task using a helper function and close the task modal
-   deleteButton.addEventListener('click', () => {
-     deleteTask(task.id);
-     toggleModal(false, elements.editTaskModalWindow);
-     refreshTasksUI();
-   });
+  // Set task details in modal inputs
+  elements.editTaskTitleInput.value = task.title;
+  elements.editTaskDescInput.value = task.description;
+  elements.editSelectStatus.value = task.status;
 
-
-   toggleModal(true, elements.editTaskModalWindow); // Show the edit task modal
-  }
-
-
-  function saveTaskChanges(taskId) {
-    // Get new user inputs
-    const editTitle = elements.editTaskTitleInput.value;
-    const editDescription = elements.editTaskDescInput.value;
-    const editStatus = elements.editSelectStatus.value;
-  
+  // Get button elements from the task modal
+  const saveBtnChanges = elements.saveTaskChangesBtn;
+  const deleteButton = elements.deleteTaskBtn;
+  // Call saveTaskChanges upon click of Save Changes button
+  saveBtnChanges.addEventListener('click', () => {
+    saveTaskChanges(task.id);
     
-    // Create an object with the updated task details
-    const editedTask = {
-      id: taskId,
-      title: editTitle,
-      description: editDescription,
-      status: editStatus
-    }
-  
-    // Update task using patchTask functoin
-    patchTask(taskId, editedTask);
-  
-    
-    // Close the modal
+  });
+
+  // Delete task using a helper function and close the task modal
+  deleteButton.addEventListener('click', () => {
+    deleteTask(task.id);
     toggleModal(false, elements.editTaskModalWindow);
-    // Refresh the UI to reflect the changes
     refreshTasksUI();
-    location.reload();
+  });
+
+  toggleModal(true, elements.editTaskModalWindow); // Show the edit task modal
+}
+
+function saveTaskChanges(taskId) {
+  // Get new user inputs
+  const editTitle = elements.editTaskTitleInput.value;
+  const editDescription = elements.editTaskDescInput.value;
+  const editStatus = elements.editSelectStatus.value;
+
+  
+  // Create an object with the updated task details
+  const editedTask = {
+    id: taskId,
+    title: editTitle,
+    description: editDescription,
+    status: editStatus
   }
+
+  // Update task using patchTask functoin
+  patchTask(taskId, editedTask);
+
+  
+  // Close the modal
+  toggleModal(false, elements.editTaskModalWindow);
+  // Refresh the UI to reflect the changes
+  refreshTasksUI();
+  location.reload();
+}
 
 /*************************************************************************************************************************************************/
+
 document.addEventListener('DOMContentLoaded', function() {
   initializeData();
   init(); // init is called after the DOM is fully loaded
