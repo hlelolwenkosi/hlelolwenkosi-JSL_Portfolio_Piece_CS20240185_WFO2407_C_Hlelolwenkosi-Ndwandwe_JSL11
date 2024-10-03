@@ -210,24 +210,24 @@ function setupEventListeners() {
     elements.filterDiv.style.display = 'none'; // Also hide the filter overlay
   });
 
-  // Show sidebar event listener
-  elements.hideSideBarBtn.click() => toggleSidebar(false));
-  elements.showSideBarBtn.click() => toggleSidebar(true));
-
-  // Theme switch event listener
-  elements.themeSwitch.addEventListener('change', toggleTheme);
-
-  // Show Add New Task Modal event listener
-  elements.createNewTaskBtn.addEventListener('click', () => {
-    toggleModal(true);
-    elements.filterDiv.style.display = 'block'; // Also show the filter overlay
-  });
-
-  // Add new task form submission event listener
-  elements.modalWindow.addEventListener('submit',  (event) => {
-    addTask(event)
-  });
-}
+   // Show sidebar event listener
+   elements.hideSideBarBtn.addEventListener('click', () => toggleSidebar(false));
+   elements.showSideBarBtn.addEventListener('click', () => toggleSidebar(true));
+ 
+   // Theme switch event listener
+   elements.themeSwitch.addEventListener('change', toggleTheme);
+ 
+   // Show Add New Task Modal event listener
+   elements.createNewTaskBtn.addEventListener('click', () => {
+     toggleModal(true);
+     elements.filterDiv.style.display = 'block'; // Also show the filter overlay
+   });
+ 
+   // Add new task form submission event listener
+   elements.modalWindow.addEventListener('submit',  (event) => {
+     addTask(event)
+   });
+ }
 
 // Toggles tasks modal
 // Task: Fix bugs
