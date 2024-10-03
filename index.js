@@ -307,8 +307,8 @@ function openEditTaskModal(task) {
    });
 
 
-  toggleModal(true, elements.editTaskModal); // Show the edit task modal
-}
+   toggleModal(true, elements.editTaskModalWindow); // Show the edit task modal
+  }
 
 function saveTaskChanges(taskId) {
   // Get new user inputs
