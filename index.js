@@ -20,8 +20,57 @@ function initializeData() {
 
 // TASK: Get elements from the DOM
 const elements = {
+  // Select the navigation sidebar elements
+  sideBarDiv: document.getElementById('side-bar-div'),
+  logo: document.getElementById('logo'),
+  iconDark: document.getElementById('icon-dark'),
+  iconLight: document.getElementById('icon-light'),
+  hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
+  showSideBarBtn: document.getElementById('show-side-bar-btn'),
+  themeSwitch: document.getElementById('switch'),
+  logoDiv: document.getElementById('side-logo-div'),
 
-}
+
+  // Select the main layout elements
+  layout: document.getElementById('layout'),
+  header: document.getElementById('header'),
+  headerBoardName: document.getElementById('header-board-name'),
+  editBoardBtn: document.getElementById('edit-board-btn'),
+  editBoardDiv: document.getElementById('editBoardDiv'),
+
+  // Select the task columns elements
+  todoHeadDiv: document.getElementById('todo-head-div'),
+  todoDot: document.getElementById('todo-dot'),
+  toDoText: document.getElementById('toDoText'),
+  tasksContainerTodo: document.querySelector('.column-div[data-status="todo"] .tasks-container'),
+  doingHeadDiv: document.getElementById('doing-head-div'),
+  doingDot: document.getElementById('doing-dot'),
+  doingText: document.getElementById('doingText'),
+  doneHeadDiv: document.getElementById('done-head-div'),
+  doneDot: document.getElementById('done-dot'),
+  doneText: document.getElementById('doneText'),
+  columnDivs: document.querySelectorAll('.column-div'),
+
+  // Select the modal elements
+  modalWindow: document.getElementById('new-task-modal-window'),
+  titleInput: document.getElementById('title-input'),
+  descInput: document.getElementById('desc-input'),
+  selectStatus: document.getElementById('select-status'),
+  createTaskBtn: document.getElementById('create-task-btn'),
+  createNewTaskBtn: document.getElementById('add-new-task-btn'),
+
+
+  // Select the edit task modal elements
+  editTaskModalWindow: document.querySelector('.edit-task-modal-window'),
+  editTaskTitleInput: document.getElementById('edit-task-title-input'),
+  editTaskDescInput: document.getElementById('edit-task-desc-input'),
+  editSelectStatus: document.getElementById('edit-select-status'),
+  saveTaskChangesBtn: document.getElementById('save-task-changes-btn'),
+  deleteTaskBtn: document.getElementById('delete-task-btn'),
+
+  // Additional elements if needed
+  filterDiv: document.getElementById('filterDiv'),
+  
 
 let activeBoard = ""
 
