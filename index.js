@@ -338,8 +338,8 @@ function openEditTaskModal(task) {
   }
 
 /*************************************************************************************************************************************************/
-
 document.addEventListener('DOMContentLoaded', function() {
+  initializeData();
   init(); // init is called after the DOM is fully loaded
 });
 
