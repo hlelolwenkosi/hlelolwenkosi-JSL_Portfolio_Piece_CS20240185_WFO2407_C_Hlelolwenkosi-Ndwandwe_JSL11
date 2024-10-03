@@ -310,20 +310,32 @@ function openEditTaskModal(task) {
    toggleModal(true, elements.editTaskModalWindow); // Show the edit task modal
   }
 
-function saveTaskChanges(taskId) {
-  // Get new user inputs
+
+  function saveTaskChanges(taskId) {
+    // Get new user inputs
+    const editTitle = elements.editTaskTitleInput.value;
+    const editDescription = elements.editTaskDescInput.value;
+    const editStatus = elements.editSelectStatus.value;
   
-
-  // Create an object with the updated task details
-
-
-  // Update task using a hlper functoin
- 
-
-  // Close the modal and refresh the UI to reflect the changes
-
-  refreshTasksUI();
-}
+    
+    // Create an object with the updated task details
+    const editedTask = {
+      id: taskId,
+      title: editTitle,
+      description: editDescription,
+      status: editStatus
+    }
+  
+    // Update task using patchTask functoin
+    patchTask(taskId, editedTask);
+  
+    
+    // Close the modal
+    toggleModal(false, elements.editTaskModalWindow);
+    // Refresh the UI to reflect the changes
+    refreshTasksUI();
+    location.reload();
+  }
 
 /*************************************************************************************************************************************************/
 
