@@ -284,7 +284,6 @@ function toggleTheme() {
 }
 
 
-
 function openEditTaskModal(task) {
   // Set task details in modal inputs
   elements.editTaskTitleInput.value = task.title;
@@ -294,10 +293,10 @@ function openEditTaskModal(task) {
   // Get button elements from the task modal
   const saveBtnChanges = elements.saveTaskChangesBtn;
   const deleteButton = elements.deleteTaskBtn;
+
   // Call saveTaskChanges upon click of Save Changes button
   saveBtnChanges.addEventListener('click', () => {
-    saveTaskChanges(task.id);
-    
+    saveTaskChanges(task.id); 
   });
 
   // Delete task using a helper function and close the task modal
@@ -306,7 +305,6 @@ function openEditTaskModal(task) {
     toggleModal(false, elements.editTaskModalWindow);
     refreshTasksUI();
   });
-
   toggleModal(true, elements.editTaskModalWindow); // Show the edit task modal
 }
 
@@ -315,8 +313,7 @@ function saveTaskChanges(taskId) {
   const editTitle = elements.editTaskTitleInput.value;
   const editDescription = elements.editTaskDescInput.value;
   const editStatus = elements.editSelectStatus.value;
-
-  
+ 
   // Create an object with the updated task details
   const editedTask = {
     id: taskId,
@@ -328,9 +325,9 @@ function saveTaskChanges(taskId) {
   // Update task using patchTask functoin
   patchTask(taskId, editedTask);
 
-  
   // Close the modal
   toggleModal(false, elements.editTaskModalWindow);
+  
   // Refresh the UI to reflect the changes
   refreshTasksUI();
   location.reload();
